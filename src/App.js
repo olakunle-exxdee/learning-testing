@@ -15,9 +15,10 @@ function App() {
         style={{ backgroundColor: btnColor }}>
         Change to {newBtnColor}
       </button>
+      <br />
       <input
         type="checkbox"
-        id="enable-button-checkbox"
+        id="disable-button-checkbox"
         aria-checked={disable}
         defaultChecked={disable}
         onClick={(e) =>
@@ -25,7 +26,7 @@ function App() {
           setDisable(e.target.checked)
         }
       />
-      <label id="enable-button-checkbox"></label>
+      <label htmlFor="disable-button-checkbox">Disable button</label>
     </div>
   );
 }
