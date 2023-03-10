@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import App from "./App";
+import { replaceCamelWithSpaces } from "./App";
 
 //this does not test the state of the app just the looks
 test("button has the correct initial color", () => {
@@ -71,4 +72,18 @@ test("change the button color to blue", () => {
 
   fireEvent.click(checkBox);
   expect(colorButton).toHaveStyle({ background: "blue" });
+});
+
+describe("spaces before camel-case capital letter", () => {
+  test("Works for no inner capital letter", () => {
+    expect(replaceCamelWithSpaces("Red")).toBe("Red");
+  });
+
+  test("Works for one inner capital letter", () => {
+    expect(replaceCamelWithSpaces("MidnightBlue")).toBe("Midnight Blue");
+  });
+
+  test("Works for multiple inner capital letter", () => {
+    expect(replaceCamelWithSpaces("MediumVioletRed")).toBe("Medium Violet Red");
+  });
 });

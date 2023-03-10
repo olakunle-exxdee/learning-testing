@@ -1,5 +1,9 @@
-import React, { useState } from "react";
-import "./App.css";
+import React, { useState } from 'react';
+import './App.css';
+
+export function replaceCamelWithSpaces(colorName) {
+  return colorName.replace(/\B([A-Z])\B/g, ' $1' );
+}
 
 function App() {
   const [btnColor, setBtnColor] = useState(`red`);
@@ -8,17 +12,17 @@ function App() {
   const newBtnColor = btnColor === `red` ? `blue` : `red`;
 
   return (
-    <div className="App">
+    <div className='App'>
       <button
         disabled={disable}
         onClick={() => setBtnColor(newBtnColor)}
-        style={{ backgroundColor: disable ? "gray" : btnColor }}>
+        style={{ backgroundColor: disable ? 'gray' : btnColor }}>
         Change to {newBtnColor}
       </button>
       <br />
       <input
-        type="checkbox"
-        id="disable-button-checkbox"
+        type='checkbox'
+        id='disable-button-checkbox'
         aria-checked={disable}
         defaultChecked={disable}
         onClick={(e) =>
@@ -26,7 +30,7 @@ function App() {
           setDisable(e.target.checked)
         }
       />
-      <label htmlFor="disable-button-checkbox">Disable button</label>
+      <label htmlFor='disable-button-checkbox'>Disable button</label>
     </div>
   );
 }
