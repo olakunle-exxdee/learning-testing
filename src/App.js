@@ -1,37 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
-
-export function replaceCamelWithSpaces(colorName) {
-  return colorName.replace(/\B([A-Z])\B/g, ' $1' );
-}
+import ColorApp from './components/ColorApp';
+import FavoriteNumber from './components/FavoriteNumber';
 
 function App() {
-  const [btnColor, setBtnColor] = useState(`red`);
-  const [disable, setDisable] = useState(false);
-
-  const newBtnColor = btnColor === `red` ? `blue` : `red`;
-
   return (
-    <div className='App'>
-      <button
-        disabled={disable}
-        onClick={() => setBtnColor(newBtnColor)}
-        style={{ backgroundColor: disable ? 'gray' : btnColor }}>
-        Change to {newBtnColor}
-      </button>
-      <br />
-      <input
-        type='checkbox'
-        id='disable-button-checkbox'
-        aria-checked={disable}
-        defaultChecked={disable}
-        onClick={(e) =>
-          // @ts-ignore
-          setDisable(e.target.checked)
-        }
-      />
-      <label htmlFor='disable-button-checkbox'>Disable button</label>
-    </div>
+    <>
+      <ColorApp />
+      <FavoriteNumber/>
+    </>
   );
 }
 
